@@ -20,6 +20,8 @@ npm install promise-retryer
 
 ## examples
 
+heres a basic retry example
+
 ```javascript
 var PromiseRetryer = require('promise-retryer');
 
@@ -28,6 +30,38 @@ PromiseRetryer.run({
 	maxRetries: 5,
 	promise: function (attempt) {
 		return makeAsyncRequest(); // returns a promise
+	}
+}).then(
+	function (response) {
+		console.log(response);
+	},
+	function (error) {
+		console.log(error);
+	}
+);
+```
+
+and heres a little more advanced example with validation and custom delays
+
+```javascript
+var PromiseRetryer = require('promise-retryer');
+
+PromiseRetryer.run({
+	delay: function (attempt) {
+		return attempt * 1000;
+	},
+	maxRetries: 5,
+	promise: function (attempt) {
+		return makeAsyncRequest(); // returns a promise
+	},
+	validate: function (response, attempt) {
+		return new Promise(function (resolve, reject) {
+			if (typeof response === 'object') {
+				resolve(response);
+			} else {
+				reject(new Error('response was not an object'));
+			}
+		});
 	}
 }).then(
 	function (response) {
