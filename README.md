@@ -2,6 +2,8 @@
 
 provides an easy way to make promises retry based on exceptions or result validation
 
+**currently depends on bluebird**
+
 ## install
 
 ```
