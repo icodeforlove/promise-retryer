@@ -2,8 +2,6 @@
 
 provides an easy way to make promises retry based on exceptions or result validation
 
-**currently depends on bluebird**
-
 ## install
 
 ```
@@ -25,7 +23,7 @@ npm install promise-retryer
 heres a basic retry example
 
 ```javascript
-var PromiseRetryer = require('promise-retryer');
+var PromiseRetryer = require('promise-retryer')(Promise);
 
 PromiseRetryer.run({
 	delay: 1000,
@@ -46,7 +44,7 @@ PromiseRetryer.run({
 and heres a little more advanced example with validation and custom delays
 
 ```javascript
-var PromiseRetryer = require('promise-retryer');
+var PromiseRetryer = require('promise-retryer')(Promise);
 
 PromiseRetryer.run({
 	delay: function (attempt) {

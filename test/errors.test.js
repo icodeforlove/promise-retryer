@@ -1,5 +1,5 @@
-var BlueBird = require('bluebird'),
-	PromiseRetryer = require('../index');
+var P = require('es6-promise').Promise,
+	PromiseRetryer = require('../index')(P);
 
 describe('Errors', function() {
 	it('can fail', function(done) {
@@ -9,7 +9,7 @@ describe('Errors', function() {
 			delay: 1,
 			maxRetries: 2,
 			promise: function (attempt) {
-				return new BlueBird(function (resolve, reject) {
+				return new P(function (resolve, reject) {
 					if (attempt == 3) {
 						resolve(true);
 					} else {

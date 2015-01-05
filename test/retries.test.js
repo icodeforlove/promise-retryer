@@ -1,5 +1,5 @@
-var BlueBird = require('bluebird'),
-	PromiseRetryer = require('../index');
+var P = require('es6-promise').Promise,
+	PromiseRetryer = require('../index')(P);
 
 describe('General', function() {
 	it('can do 10 basic retries', function(done) {
@@ -9,7 +9,7 @@ describe('General', function() {
 			delay: 1,
 			maxRetries: 10,
 			promise: function (attempt) {
-				return new BlueBird(function (resolve, reject) {
+				return new P(function (resolve, reject) {
 					if (attempt == 10) {
 						resolve(true);
 					} else {
@@ -33,7 +33,7 @@ describe('General', function() {
 			delay: 1,
 			maxRetries: 5,
 			promise: function (attempt) {
-				return new BlueBird(function (resolve, reject) {
+				return new P(function (resolve, reject) {
 					if (attempt > 2) {
 						resolve(true);
 					} else {
@@ -42,7 +42,7 @@ describe('General', function() {
 				});
 			},
 			validate: function (response, attempt) {
-				return new BlueBird(function (resolve, reject) {
+				return new P(function (resolve, reject) {
 					// console.log('Validation attempt #' + attempt);
 					if (attempt < 5) {
 						reject(new Error('did not pass validation'));
@@ -69,7 +69,7 @@ describe('General', function() {
 			delay: 100,
 			maxRetries: 5,
 			promise: function (attempt) {
-				return new BlueBird(function (resolve, reject) {
+				return new P(function (resolve, reject) {
 					if (attempt == 5) {
 						resolve(true);
 					} else {
@@ -100,7 +100,7 @@ describe('General', function() {
 			},
 			maxRetries: 5,
 			promise: function (attempt) {
-				return new BlueBird(function (resolve, reject) {
+				return new P(function (resolve, reject) {
 					if (attempt == 5) {
 						resolve(true);
 					} else {

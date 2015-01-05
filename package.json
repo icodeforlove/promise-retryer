@@ -1,6 +1,6 @@
 {
   "name": "promise-retryer",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "provides an easy way to make promises retry based on exceptions or result validation",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "es6-promise": "^2.0.1",
     "grunt": "~0.4.5",
     "grunt-contrib-jshint": "~0.10.0",
     "grunt-contrib-watch": "~0.6.1",
@@ -23,7 +24,6 @@
     "grunt-cli": "~0.1.13"
   },
   "dependencies": {
-    "bluebird": "^2.5.3",
     "promise-object": "^0.1.4"
   }
 }
