@@ -7,7 +7,7 @@ module.exports = function (Promise) {
 
 		$run: function ($deferred, $class, $config, _attempt) {
 	 		if (typeof $config.promise !== 'function') {
-				throw new TypeError($class.message('the :promise property mush be a function that returns a promise'));
+				throw new TypeError($class.message('the :promise property must be a function that returns a promise'));
 			}
 
 			_attempt = _attempt || 1;
