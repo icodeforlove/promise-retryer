@@ -1,5 +1,7 @@
 # promise-retryer [![Build Status](https://travis-ci.org/icodeforlove/promise-retryer.png?branch=master)](https://travis-ci.org/icodeforlove/promise-retryer)
 
+**<font color="red">THIS IS DEPRECATED, PLEASE USE [RTRY](https://github.com/icodeforlove/rtry)</font>**
+
 provides an easy way to make promises retry based on exceptions or result validation
 
 ## install
